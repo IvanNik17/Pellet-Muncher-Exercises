@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class MoveCharacterNew : MonoBehaviour
 {
@@ -9,33 +8,28 @@ public class MoveCharacterNew : MonoBehaviour
     private int pelletCount = 0;
 
     public int health = 10;
-
-    MuncherAttributes myMuncher;
     // Start is called before the first frame update
     void Start()
     {
-        myMuncher = new MuncherAttributes(10, 10, 0);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.aKey.isPressed)
+        if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(-speed, 0f, 0f);
         }
-
-        if (Keyboard.current.dKey.isPressed)
+        if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(speed, 0f, 0f);
         }
-
-        if (Keyboard.current.sKey.isPressed)
+        if (Input.GetKey(KeyCode.S))
         {
             transform.Translate(0.0f, 0f, -speed);
         }
-
-        if (Keyboard.current.wKey.isPressed)
+        if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(0.0f, 0f, speed);
         }
@@ -50,9 +44,7 @@ public class MoveCharacterNew : MonoBehaviour
 
             pelletCount = pelletCount + 1;
 
-            myMuncher.setScore(pelletCount);
-
-            string textToSay = "I have eaten " + myMuncher.getScore().ToString() + " pellets";
+            string textToSay = "I have eaten " + pelletCount.ToString() + " pellets";
 
             Debug.Log(textToSay);
 
@@ -65,14 +57,7 @@ public class MoveCharacterNew : MonoBehaviour
             Instantiate(pelletPrefab, new Vector3(Random.Range(-20, 20), 1.5f, Random.Range(-20, 20)), Quaternion.identity);
         }
 
-        if (collision.transform.CompareTag("Bullet"))
-        {
-            int currHealth = myMuncher.getHealth();
 
-            myMuncher.setHealth(currHealth-1);
-
-            Debug.Log($"Ouch! My current health is {currHealth - 1}");
-        }
     }
 
     Vector3 growScale(Vector3 scale, float amount)
