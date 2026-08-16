@@ -1,2 +1,2 @@
-# Pellet Muncher - After Classes
+# Pellet Muncher - After Functions Lecture
 IKDU Course exercise game Medialogy
