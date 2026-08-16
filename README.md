@@ -1,2 +1,2 @@
-# Pellet Muncher - After Classes
+# Pellet Muncher - Basic Version
 IKDU Course exercise game Medialogy
